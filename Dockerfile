@@ -1,7 +1,10 @@
 FROM python:3.9-slim
 
-RUN pip install cryptography
+# Устанавливаем git и другие зависимости
+RUN apt-get update && apt-get install -y git && \
+    pip install cryptography
 
+# Клонируем MTProto прокси
 RUN git clone https://github.com/alexbers/mtprotoproxy.git /app
 WORKDIR /app
 
